@@ -6,7 +6,7 @@ if ('serviceWorker' in window.navigator) {
       messageChannel.port1.onmessage = e => {
         console.log(e.data); // this message is from sw.js, to page
       }
-      reg.active.postMessage("this message is from page, to sw", [messageChannel.por2]);
+      reg.active.postMessage("this message is from page, to sw", [messageChannel.port2]);
     })
     .catch(() => {
       console.log('register error')

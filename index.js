@@ -1,12 +1,26 @@
 if ('serviceWorker' in window.navigator) {
   navigator.serviceWorker.register('./sw.js', { scope: './' })
     .then(function (reg) {
-      const messageChannel = new MessageChannel();
-      console.log(messageChannel)
-      messageChannel.port1.onmessage = e => {
-        console.log(e.data); // this message is from sw.js, to page
-      }
-      reg.active.postMessage("this message is from page, to sw", [messageChannel.port2]);
+      console.log('register success')
+      this.addEventListener('fetch', function (event) {
+        console.log(event.request.url);
+        event.respondWith(
+          caches.match(event.request).then(res => {
+            return res ||
+              fetch(event.request)
+                .then(responese => {
+                  const responeseClone = responese.clone();
+                  caches.open('sw_demo').then(cache => {
+                    cache.put(event.request, responeseClone);
+                  })
+                  return responese;
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+          })
+        )
+      });
     })
     .catch((err) => {
       console.log('register fail ',err)

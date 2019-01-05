@@ -8,7 +8,7 @@ if ('serviceWorker' in window.navigator) {
       }
       reg.active.postMessage("this message is from page, to sw", [messageChannel.port2]);
     })
-    .catch(() => {
-      console.log('register error')
+    .catch((err) => {
+      console.log('register fail ',err)
     })
 }

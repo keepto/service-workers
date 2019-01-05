@@ -1,5 +1,5 @@
 if ('serviceWorker' in window.navigator) {
-  navigator.serviceWorker.register('./sw.js', { scope: './js' })
+  navigator.serviceWorker.register('./js/sw.js', { scope: './' })
     .then(function (reg) {
       const messageChannel = new MessageChannel();
       console.log(messageChannel)

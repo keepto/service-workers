@@ -1,14 +1,6 @@
 // 注册
 this.addEventListener('install', function (event) {
   console.log('Service Worker install');
-  // 缓存指定静态资源
-  /* event.waitUntil(
-    caches.open('img_storage').then(function (cache) {
-      return cache.addAll([
-        './img/1.jpg',
-        './img/2.jpg'
-      ])
-  })); */
 })
 
 
@@ -26,7 +18,7 @@ this.addEventListener('fetch', function (event) {
         // and serve second one
         let responseClone = response.clone();
         console.log('caches:',caches)
-        caches.open('img_storage').then(function (cache) {
+        caches.open('v2').then(function (cache) {
           cache.put(event.request, responseClone);
         });
         return response;

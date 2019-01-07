@@ -4,8 +4,8 @@ this.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open('img_storage').then(function (cache) {
       return cache.addAll([
-        '/img/1.jpg',
-        '/img/2.jpg'
+        './img/1.jpg',
+        './img/2.jpg'
       ])
     }));
 })
@@ -28,7 +28,7 @@ this.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
-        return caches.match('/img/star-wars-logo.jpg');
+        return caches.match('./img/star-wars-logo.jpg');
       });
     }
   }));

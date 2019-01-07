@@ -1,16 +1,16 @@
 // 注册
 this.addEventListener('install', function (event) {
   console.log('Service Worker install');
-  /* event.waitUntil(
+  event.waitUntil(
     caches.open('img_storage').then(function (cache) {
       return cache.addAll([
         './img/1.jpg',
         './img/2.jpg'
       ])
-    })); */
+    }));
 })
 
-this.addEventListener('fetch', function(event) {
+/* this.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
     // caches.match() always resolves
     // but in case of success response will have value
@@ -32,7 +32,7 @@ this.addEventListener('fetch', function(event) {
       });
     }
   }));
-});
+}); */
 
 // 激活
 this.addEventListener('activate', function (event) {

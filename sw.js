@@ -1,13 +1,13 @@
 // 注册
 this.addEventListener('install', function (event) {
   console.log('Service Worker install');
-  event.waitUntil(
+  /* event.waitUntil(
     caches.open('img_storage').then(function (cache) {
       return cache.addAll([
         './img/1.jpg',
         './img/2.jpg'
       ])
-    }));
+    })); */
 })
 
 this.addEventListener('fetch', function(event) {

@@ -37,7 +37,7 @@ this.addEventListener('fetch', function (event) {
   }));
 });
 
-const cacheNames = ['sw_demo_v2']; // Cahce Stroage 白名单
+const cacheNames = ['img_storage']; // Cahce Stroage 白名单
 
 // 激活
 this.addEventListener('activate', function (event) {

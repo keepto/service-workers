@@ -37,9 +37,22 @@ this.addEventListener('fetch', function (event) {
   }));
 });
 
+const cacheNames = ['sw_demo_v2']; // Cahce Stroage 白名单
+
 // 激活
 this.addEventListener('activate', function (event) {
   console.log('Service Worker activate');
+  console.log('cache:', caches)
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all[keys.map(key => {
+        if (!cacheNames.includes(key)) {
+          console.log(key);
+          return caches.delete(key); // 删除不在白名单中的 Cache Stroage
+        }
+      })]
+    })
+  )
 })
 
 this.addEventListener('message', function (event) {
